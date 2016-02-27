@@ -22,16 +22,17 @@ exports.arraysAnswers = {
   },
 
   remove : function(arr, item) {
-    var arrCopy = arr.sort();
-    var frontIndex = arrCopy.indexOf(item);
-    var endIndex = arrCopy.lastIndexOf(item, -1);
-    arrCopy.splice(frontIndex, endIndex - frontIndex + 1);
+    var arrCopy = [];
+    var arrItem;
+    for(arrItem of arr) {
+      if (arrItem !== item) {
+        arrCopy.push(arrItem);
+      }
+    }
     return arrCopy;
   },
 
   removeWithoutCopy : function(arr, item) {
-    var sortedArr = arr.sort();
-
     return arr;
   },
 
