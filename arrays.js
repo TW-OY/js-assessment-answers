@@ -45,42 +45,77 @@ exports.arraysAnswers = {
   },
 
   append : function(arr, item) {
+    arr.push(item);
+    return arr;
 
   },
 
   truncate : function(arr) {
+    arr.pop();
+    return arr;
 
   },
 
   prepend : function(arr, item) {
+    arr.unshift(item);
+    return arr;
 
   },
 
   curtail : function(arr) {
+    arr.shift();
+    return arr;
 
   },
 
   concat : function(arr1, arr2) {
+    return arr1.concat(arr2);
 
   },
 
   insert : function(arr, item, index) {
-
+    var frontArr = arr.slice(0,index);
+    var rearArr = arr.slice(index);
+    frontArr.push(item);
+    return frontArr.concat(rearArr);
   },
 
   count : function(arr, item) {
-
+    var count = 0;
+    arr.forEach(function(arrItem) {
+      if(arrItem === item) {
+        count += 1;
+      }
+    });
+    return count;
   },
 
   duplicates : function(arr) {
-
-  },
+    var sortedArr = arr.sort();
+    var duplicateArr = [];
+    for(var i = 0; i < sortedArr.length; i ++) {
+      if(sortedArr.indexOf(sortedArr[i]) !== sortedArr.lastIndexOf(sortedArr[i])) {
+        duplicateArr.push(sortedArr[i]);
+        i = sortedArr.lastIndexOf(sortedArr[i]);
+      }
+    }
+    return duplicateArr;
+      },
 
   square : function(arr) {
+    return arr.map(function(item) {
+      return item * item;
+    });
 
   },
 
   findAllOccurrences : function(arr, target) {
-
+    var indexArr = [];
+    arr.forEach(function(item, index) {
+      if(item === target) {
+        indexArr.push(index);
+      }
+    });
+    return indexArr;
   }
 };
