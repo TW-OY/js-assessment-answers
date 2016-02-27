@@ -33,6 +33,14 @@ exports.arraysAnswers = {
   },
 
   removeWithoutCopy : function(arr, item) {
+    var arrLen = arr.length;
+    for(var i = 0; i < arrLen; i++) {
+      if(arr[i] === item) {
+        arr.splice(i, 1);
+        i = i - 1;
+        arrLen = arrLen - 1;
+      }
+    }
     return arr;
   },
 
