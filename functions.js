@@ -54,7 +54,7 @@ exports.functionsAnswers = {
   partialUsingArguments : function(fn) {
     var args = Array.prototype.slice.call(arguments, 1);
     return function() {
-      var moreArgs = arguments;
+      var moreArgs = Array.prototype.slice.call(arguments);
       var finalArgs = args.concat(moreArgs);
       return fn.apply(null, finalArgs);
     };
